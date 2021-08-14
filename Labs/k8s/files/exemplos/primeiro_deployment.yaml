@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: sanux
+  name: deploy-sanux
+  namespace: revoada
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: sanux
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: sanux
+    spec:
+      containers:
+      - image: jlasquinha/sanux-httpd
+        name: sanux-lab
+        ports:
+        - containerPort: 80

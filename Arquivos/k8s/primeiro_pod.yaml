@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: primeiro-pod
+spec:
+  containers:
+  - name: sanux-httpd-pod
+    image: jlasquinha/sanux-httpd
+

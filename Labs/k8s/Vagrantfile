@@ -1,0 +1,33 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+vms = {
+  'sanux-lab-01' => {'memory' => '6144', 'cpus' => 2, 'ip' => '110', 'host' => 'sanux-lab-01', 'provision' => 'master.sh'},
+  'sanux-lab-02' => {'memory' => '2048', 'cpus' => 2, 'ip' => '120', 'host' => 'sanux-lab-02', 'provision' => 'node.sh'}
+}
+
+Vagrant.configure('2') do |config|
+
+  config.vm.box = 'hashicorp/bionic64'
+  config.vm.box_check_update = false
+
+  vms.each do |name, conf|
+    config.vm.define "#{name}" do |k|
+      k.vm.hostname = "#{conf['host']}.pt.com"
+      k.vm.network 'private_network', ip: "172.27.11.#{conf['ip']}"
+      k.vm.provider 'virtualbox' do |vb|
+        vb.gui = true
+        vb.memory = conf['memory']
+        vb.cpus = conf['cpus']
+      end
+      k.vm.provider 'libvirt' do |lv|
+        lv.memory = conf['memory']
+        lv.cpus = conf['cpus']
+        lv.cputopology :sockets => 1, :cores => conf['cpus'], :threads => '1'
+      end
+      k.vm.provision 'shell', path: "provision/#{conf['provision']}"
+    end
+  end
+
+  config.vm.provision 'shell', path: 'provision/provision.sh'
+end

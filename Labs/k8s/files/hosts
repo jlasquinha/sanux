@@ -1,0 +1,13 @@
+[OSEv3:children]
+masters
+nodes
+etcd
+
+[masters]
+sanux-lab-01.pt.com
+
+[etcd]
+sanux-lab-01.pt.com
+
+[nodes]
+sanux-lab-02.pt.com
