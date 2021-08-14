@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: o-pai-ta-on
+spec:
+  selector:
+    matchLabels:
+      app: online
+  replicas: 10
+  template:
+    metadata:
+      labels:
+        app: online
+    spec:
+      containers:
+      - name: paitaon
+        image: jlasquinha/sanux-httpd
+        ports:
+        - containerPort: 80

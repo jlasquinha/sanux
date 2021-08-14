@@ -1,0 +1,10 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: o-pai-ta-on-http-route
+spec:
+  to:
+    kind: Service
+    name: o-pai-ta-on-http
+  port:
+    targetPort: 80
