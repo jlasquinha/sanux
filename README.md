@@ -1,6 +1,4 @@
-# sanux
-
-Laboratorio Sanux <br>
+# Laboratorio Sanux <br>
 Treinamento Docker - Kubernets - OpenShift
 <br>
 Data 15/08/201 
