@@ -5,4 +5,3 @@ Data 15/08/201
 <br>
 Horário 11:00 as 14:00 - Horario BR
 <br>
-#sanux #trainings
